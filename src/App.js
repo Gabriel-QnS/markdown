@@ -13,14 +13,13 @@ function MarkdownPreviewer() {
 
   function renderText(text) {
     const parsed = marked.parse(text);
-    console.log(parsed)
-    document.getElementById('preview').innerHTML = parsed
+    return parsed
   };
 
   return (
     <div>
       <textarea id="editor" onChange={handleChange} />
-      <div id="preview" />
+      <div id="preview">{renderText}</div>
     </div>
   )};
 
