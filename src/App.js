@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import MarkdownTutorial from './markdownTutorial';
 import Footer from './footer';
+import Header from './header';
 
 function MarkdownPreviewer() {
 
@@ -81,7 +82,7 @@ function MarkdownPreviewer() {
 function App() {
   return (
     <div className="App flex flex-column justify-content-center align-items-center">
-      <h1 className='text-danger'>Markdown Previewer</h1>
+      <Header />
       <MarkdownPreviewer />
       <Footer />
     </div>
