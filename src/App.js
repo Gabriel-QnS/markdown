@@ -49,11 +49,7 @@ function MarkdownPreviewer() {
   function RenderText({ text }) {
     const parsed = marked.parse(text);
     return (
-      <div id="preview" className='text-start border border-light border-5 m-auto p-3 col-6' value={
-        text? 
-        {__html: parsed} : 
-        {__html: marked.parse(initialText)} 
-      } 
+      <div id="preview" className='text-start border border-light border-2 col' 
       dangerouslySetInnerHTML={
         text? 
         {__html: parsed} : 
@@ -81,7 +77,7 @@ function MarkdownPreviewer() {
   }
 
   return (
-    <div id="markdown-app" className='row p-3'>
+    <div id="markdown-app" className='row container-fluid justify-content-center m-auto'>
       <div id="editorWrap" className='col d-flex flex-column'>
         <textarea 
           className='border rounded border-5 border-danger text-left container flex-grow-1' 
@@ -97,7 +93,7 @@ function MarkdownPreviewer() {
 
 function App() {
   return (
-    <div className="App flex flex-column justify-content-center align-items-center">
+    <div className="App">
       <Header />
       <MarkdownTutorial />
       <MarkdownPreviewer />

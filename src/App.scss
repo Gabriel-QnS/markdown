@@ -73,12 +73,15 @@
   background-color: $gray-900;
 }
 
+#markdown-app{
+  height: fit-content;
+  min-height: 400px;
+ }
+
+
 @media (min-width: 768px) {
 
-  // #markdown-app{
-  
-  // }
-
+  // 
   #editorWrap, #preview {
     min-height: 50vh;
     max-height: 100%
