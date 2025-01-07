@@ -49,7 +49,17 @@ function MarkdownPreviewer() {
   function RenderText({ text }) {
     const parsed = marked.parse(text);
     return (
-      <div id="preview" className='text-start border border-light border-5 m-auto p-3' dangerouslySetInnerHTML={useState? {__html: parsed} : marked.parse(initialText)}></div>
+      <div id="preview" className='text-start border border-light border-5 m-auto p-3 col-6' value={
+        text? 
+        {__html: parsed} : 
+        {__html: marked.parse(initialText)} 
+      } 
+      dangerouslySetInnerHTML={
+        text? 
+        {__html: parsed} : 
+        {__html: marked.parse(initialText)} 
+      } 
+        ></div>
     )
   };
 
@@ -63,7 +73,7 @@ function MarkdownPreviewer() {
     }
 
     return (
-      <div className='d-flex justify-content-center'>
+      <div className='d-flex flex-row justify-content-center col col-12 align-items-center'>
         <button className='btn btn-danger m-3' onClick={clearText}>Clear</button>
         <button className='btn btn-danger m-3' onClick={fillText}>Fill with Example</button>
       </div>
@@ -71,11 +81,17 @@ function MarkdownPreviewer() {
   }
 
   return (
-    <div>
-      <MarkdownTutorial />
-      <textarea className='border rounded border-5 border-danger text-left' value={text} id="editor" onChange={handleChange} />
-      <ControlPanel />
-      <RenderText text={text} />
+    <div id="markdown-app" className='row p-3'>
+      <div id="editorWrap" className='col d-flex flex-column'>
+        <textarea 
+          className='border rounded border-5 border-danger text-left container flex-grow-1' 
+          value={text} 
+          id="editor" 
+          onChange={handleChange} 
+        />
+        <ControlPanel />
+      </div>
+      <RenderText text={text}/>
     </div>
   )};
 
@@ -83,6 +99,7 @@ function App() {
   return (
     <div className="App flex flex-column justify-content-center align-items-center">
       <Header />
+      <MarkdownTutorial />
       <MarkdownPreviewer />
       <Footer />
     </div>

@@ -1,6 +1,8 @@
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import './markdownTutorial.scss';
 
+*{box-sizing: border-box;}
+
 :root{
   --red1: #ff0000;
 }
@@ -46,11 +48,6 @@
 
 #editor{
   background-color: $red-300;
-  min-width: 200px;
-  width: 70vw;
-  max-width: 800px;
-  min-height: 500px;
-  height: 50vh;
 }
 
 #editor::-webkit-scrollbar {
@@ -74,8 +71,16 @@
 
 #preview{
   background-color: $gray-900;
-  width: 90vw;
-  max-width: 1024px;
-  height: 90vh;
-  min-height: 800px;
+}
+
+@media (min-width: 768px) {
+
+  // #markdown-app{
+  
+  // }
+
+  #editorWrap, #preview {
+    min-height: 50vh;
+    max-height: 100%
+  }
 }
