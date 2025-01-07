@@ -48,6 +48,9 @@ function MarkdownPreviewer() {
 
   function RenderText({ text }) {
     const parsed = marked.parse(text);
+
+    useEffect(() => { }, [text]);
+
     return (
       <div id="preview" className='text-start border border-light border-2 col' 
       dangerouslySetInnerHTML={
@@ -61,8 +64,10 @@ function MarkdownPreviewer() {
 
   function ControlPanel() {
     function clearText() {
-      setText('');
+      setText('<!-- Text Cleared! -->');
     };
+
+
 
     function fillText() {
       setText(initialText);
