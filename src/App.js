@@ -1,6 +1,9 @@
-import './App.css';
+import './App.scss';
 import { marked } from 'marked';
 import { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import MarkdownTutorial from './markdownTutorial';
 
 function MarkdownPreviewer() {
 
@@ -44,21 +47,40 @@ function MarkdownPreviewer() {
   function RenderText({ text }) {
     const parsed = marked.parse(text);
     return (
-      <div id="preview" dangerouslySetInnerHTML={useState? {__html: parsed} : marked.parse(initialText)}></div>
+      <div id="preview" className='text-start border border-light border-5 m-auto p-3' dangerouslySetInnerHTML={useState? {__html: parsed} : marked.parse(initialText)}></div>
     )
   };
 
+  function ControlPanel() {
+    function clearText() {
+      setText('');
+    };
+
+    function fillText() {
+      setText(initialText);
+    }
+
+    return (
+      <div className='d-flex justify-content-center'>
+        <button className='btn btn-danger m-3' onClick={clearText}>Clear</button>
+        <button className='btn btn-danger m-3' onClick={fillText}>Fill with Example</button>
+      </div>
+    )
+  }
+
   return (
     <div>
-      <textarea value={text} id="editor" onChange={handleChange} />
+      <MarkdownTutorial />
+      <textarea className='border rounded border-5 border-danger text-left' value={text} id="editor" onChange={handleChange} />
+      <ControlPanel />
       <RenderText text={text} />
     </div>
   )};
 
 function App() {
   return (
-    <div className="App">
-      <h1>Markdown Previewer</h1>
+    <div className="App flex flex-column justify-content-center align-items-center">
+      <h1 className='text-danger'>Markdown Previewer</h1>
       <MarkdownPreviewer />
     </div>
   );
