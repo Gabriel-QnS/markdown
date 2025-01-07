@@ -4,7 +4,11 @@ import { useEffect, useState } from 'react';
 
 function MarkdownPreviewer() {
 
-  const initialText = `  # Header 1
+  const initialText = `  
+  <!-- Here you can find examples of Markdown -->
+  <!-- Use the button clear to erase all the inner contents -->
+
+  # Header 1
   ## Header 2
   ### Header 3
   #### Header 4
@@ -31,7 +35,7 @@ function MarkdownPreviewer() {
   
   > This is a blockquote.`;
     
-  const [text, setText] = useState("");
+  const [text, setText] = useState(initialText);
 
   function handleChange(event) {
     setText(event.target.value);
@@ -46,7 +50,7 @@ function MarkdownPreviewer() {
 
   return (
     <div>
-      <textarea id="editor" onChange={handleChange} />
+      <textarea value={text} id="editor" onChange={handleChange} />
       <RenderText text={text} />
     </div>
   )};
