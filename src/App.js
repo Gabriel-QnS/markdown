@@ -52,7 +52,7 @@ function MarkdownPreviewer() {
     useEffect(() => { }, [text]);
 
     return (
-      <div id="preview" className='text-start border border-light border-2 col' 
+      <div id="preview" className='text-start border border-light border-2 col col-sm-6' 
       dangerouslySetInnerHTML={
         text? 
         {__html: parsed} : 
@@ -83,7 +83,7 @@ function MarkdownPreviewer() {
 
   return (
     <div id="markdown-app" className='row container-fluid justify-content-center m-auto'>
-      <div id="editorWrap" className='col d-flex flex-column'>
+      <div id="editorWrap" className='col col-12 col-sm-6 d-flex flex-column'>
         <textarea 
           className='border rounded border-5 border-danger text-left container flex-grow-1' 
           value={text} 
